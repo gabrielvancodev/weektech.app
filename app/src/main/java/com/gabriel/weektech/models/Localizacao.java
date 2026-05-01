@@ -10,4 +10,6 @@ public class Localizacao {
     public String endereco;
     public String cidade;
     public String estado;
+
+
 }
