@@ -1,4 +1,6 @@
 package com.gabriel.weektech.models;
+import androidx.room.*;
+
 
 @Entity(tableName = "patrocinador")
 public class Patrocinador {

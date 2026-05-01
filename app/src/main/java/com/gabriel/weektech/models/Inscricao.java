@@ -1,5 +1,8 @@
 package com.gabriel.weektech.models;
 
+import androidx.room.*;
+
+
 @Entity(
         tableName = "inscricao",
         foreignKeys = {

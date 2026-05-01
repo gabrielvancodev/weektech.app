@@ -1,4 +1,5 @@
 package com.gabriel.weektech.models;
+import androidx.room.*;
 
 @Entity(tableName = "localizacao")
 public class Localizacao {

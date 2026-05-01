@@ -4,6 +4,7 @@ import androidx.room.*;
 
 import com.gabriel.weektech.models.Evento;
 import com.gabriel.weektech.models.Patrocinador;
+import com.gabriel.weektech.models.EventoPatrocinadorCrossRef;
 
 import java.util.List;
 

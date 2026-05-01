@@ -1,4 +1,5 @@
 package com.gabriel.weektech.models;
+import androidx.room.*;
 
 @Entity(tableName = "usuario")
 public class Usuario {
@@ -12,4 +13,10 @@ public class Usuario {
     public String email;
     public String senha;
     public String tipo; // ADMIN ou ALUNO
+
+    public String curso;
+
+    public String serie;
+
+    public boolean coffee_break;
 }
