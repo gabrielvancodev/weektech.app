@@ -2,7 +2,6 @@ package com.gabriel.weektech.models.dao;
 
 
 import androidx.room.*;
-
 import com.gabriel.weektech.models.Usuario;
 
 @Dao
