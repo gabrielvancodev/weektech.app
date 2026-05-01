@@ -1,4 +1,4 @@
 package com.gabriel.weektech.database;
 
-public class DatabaseHelper {
+public class AppDataBase {
 }
