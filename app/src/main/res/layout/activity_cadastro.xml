@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome Completo" />
+
+        <EditText
+            android:id="@+id/ra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="RA"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/curso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Curso" />
+
+        <EditText
+            android:id="@+id/serie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Série" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <CheckBox
+            android:id="@+id/checkCoffee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participar do Coffee Break" />
+
+        <Button
+            android:id="@+id/btnCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar" />
+
+    </LinearLayout>
+</ScrollView>
