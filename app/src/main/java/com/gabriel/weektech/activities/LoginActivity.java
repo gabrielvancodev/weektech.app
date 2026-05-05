@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText email, senha;
     Button btnLogin;
+    Button btnCriarConta;
 
     // Método Protegido para criar a tela de login
     @Override
@@ -26,8 +27,13 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         senha = findViewById(R.id.senha);
         btnLogin = findViewById(R.id.btnLogin);
+        btnCriarConta = findViewById(R.id.btnCriarConta);
 
         btnLogin.setOnClickListener(v -> fazerLogin());
+        btnCriarConta.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CadastroActivity.class);
+            startActivity(intent);
+        });
     }
 // Método Privad opara realizar login
     private void fazerLogin() {

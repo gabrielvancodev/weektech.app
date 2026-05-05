@@ -11,7 +11,7 @@ import com.gabriel.weektech.R;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    EditText nome, ra, curso, serie, email;
+    EditText nome, ra, curso, serie, email, senha;
     CheckBox checkCoffee;
     Button btnCadastrar;
 
@@ -26,6 +26,7 @@ public class CadastroActivity extends AppCompatActivity {
         curso = findViewById(R.id.curso);
         serie = findViewById(R.id.serie);
         email = findViewById(R.id.email);
+        senha = findViewById(R.id.senha);
         checkCoffee = findViewById(R.id.checkCoffee);
         btnCadastrar = findViewById(R.id.btnCadastrar);
 
@@ -41,23 +42,22 @@ public class CadastroActivity extends AppCompatActivity {
         String cursoStr = curso.getText().toString();
         String serieStr = serie.getText().toString();
         String emailStr = email.getText().toString();
+        String senhaStr = senha.getText().toString();
         boolean coffee = checkCoffee.isChecked();
 
         //  Validação básica
-        if (nomeStr.isEmpty() || emailStr.isEmpty()) {
-            Toast.makeText(this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show();
+        if (nomeStr.isEmpty() || emailStr.isEmpty() || senhaStr.isEmpty()) {
+            Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
         }
-
         //  Criando usuário
         Usuario user = new Usuario();
         user.nome_completo = nomeStr;
         user.ra = raStr;
         user.email = emailStr;
         user.tipo = "ALUNO";
+        user.senha = senhaStr;
 
-        // Ainda não temos a senha - Por agora essa será padrão
-        user.senha = "123";
 
         db.usuarioDao().inserir(user);
 
