@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-// Método Privad opara realizar login
+// Método Privado opara realizar login
     private void fazerLogin() {
 // Pegando dados do usuário
         String emailStr = email.getText().toString();

@@ -15,4 +15,6 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM usuario")
     List<Usuario> listar();
+
+
 }
