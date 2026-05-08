@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local do Evento: Unicesumar"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp" />
+        android:text="Cadastro de Localização"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/nomeLocal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Local"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/endereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Endereço"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/cidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cidade"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/estado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estado"
+        android:inputType="text"/>
 
     <Button
-        android:id="@+id/btnMapa"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSalvar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Abrir no Google Maps" />
+        android:text="Salvar Localização"
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>
