@@ -1,6 +1,8 @@
 package com.gabriel.weektech.activities;
 
-public class FAQActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FAQActivity extends AppCompatActivity {
 
 
 }
