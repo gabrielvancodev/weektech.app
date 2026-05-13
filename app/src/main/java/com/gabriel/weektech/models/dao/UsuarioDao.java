@@ -16,5 +16,6 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuario")
     List<Usuario> listar();
 
-
+    @Query("SELECT COUNT(*) FROM usuario")
+    int contarUsuarios();
 }

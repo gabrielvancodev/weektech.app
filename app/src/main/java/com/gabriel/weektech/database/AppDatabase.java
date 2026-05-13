@@ -29,6 +29,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PalestraDao palestraDao();
     public abstract InscricaoDao inscricaoDao();
     public abstract LocalizacaoDao localizacaoDao();
+    public abstract ProjetoDao projetoDao();
 
     private static AppDatabase INSTANCE;
 
