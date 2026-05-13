@@ -1,139 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#F5F5F5"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0F172A">
 
-    <!-- TOPO -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <Button
-            android:id="@+id/btnVoltar"
+        <!-- TOPO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← Voltar"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00CFFF"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Painel Admin"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- CARD RESUMO -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#1E293B">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumo do Evento"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/totalUsuarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total de inscritos: 0"
+                    android:textColor="#CBD5E1"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- TÍTULO -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="← Voltar"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Painel Administrativo"
-            android:textSize="22sp"
+            android:text="Gerenciamento"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:gravity="center"/>
-    </LinearLayout>
+            android:textSize="22sp"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- CARD INFORMAÇÕES -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        android:layout_marginBottom="16dp">
-
+        <!-- BOTÕES -->
         <LinearLayout
-            android:orientation="vertical"
-            android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnCadastrarEvento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Resumo do Evento"
+                android:text="Cadastrar Evento"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginBottom="8dp"/>
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="#2563EB"
+                android:layout_marginBottom="12dp"/>
 
-            <TextView
-                android:id="@+id/totalUsuarios"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnCadastrarPalestra"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Total de inscritos: 0"
-                android:textSize="16sp"/>
+                android:text="Cadastrar Palestra"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="#2563EB"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnCadastrarPalestrante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar Palestrante"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="#2563EB"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnCadastrarProjeto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar Projeto"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="#2563EB"
+                android:layout_marginBottom="24dp"/>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <!-- BOTÕES ADMIN -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gerenciamento"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="12dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- EVENTO -->
-        <Button
-            android:id="@+id/btnCadastrarEvento"
+        <!-- CARD USUÁRIOS -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar Evento"
-            android:layout_marginBottom="10dp"/>
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="#1E293B">
 
-        <!-- PALESTRA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuários Inscritos"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerUsuarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- BOTÃO FECHAR -->
         <Button
-            android:id="@+id/btnCadastrarPalestra"
+            android:id="@+id/btnFechar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar Palestra"
-            android:layout_marginBottom="10dp"/>
-
-        <!-- PALESTRANTE -->
-        <Button
-            android:id="@+id/btnCadastrarPalestrante"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastrar Palestrante"
-            android:layout_marginBottom="10dp"/>
-
-        <!-- PROJETO -->
-        <Button
-            android:id="@+id/btnCadastrarProjeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastrar Projeto"
-            android:layout_marginBottom="16dp"/>
+            android:text="Fechar Painel"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#DC2626"
+            android:layout_marginTop="24dp"/>
 
     </LinearLayout>
 
-    <!-- LISTA -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Usuários Inscritos"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerUsuarios"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <!-- BOTÃO FECHAR -->
-    <Button
-        android:id="@+id/btnFechar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fechar Painel"
-        android:layout_marginTop="12dp"/>
-
-</LinearLayout>
+</ScrollView>
