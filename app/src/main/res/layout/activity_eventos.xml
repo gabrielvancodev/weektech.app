@@ -4,26 +4,113 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0F172A">
 
+    <!-- BOTÃO VOLTAR -->
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_media_previous"
+        android:tint="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- TÍTULO -->
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eventos"
-        android:textSize="24sp"
+        android:text="Eventos WeekTech"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btnVoltar"
+        app:layout_constraintBottom_toBottomOf="@id/btnVoltar"
+        app:layout_constraintStart_toEndOf="@id/btnVoltar"
+        android:layout_marginStart="12dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerEventos"
+    <!-- CARD EVENTO 1 -->
+    <LinearLayout
+        android:id="@+id/cardEvento1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:background="#1E293B"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btnVoltar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Palestra IA e Futuro"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auditório Principal - 19:00"
+            android:textColor="#CBD5E1"
+            android:layout_marginTop="6dp"/>
+
+        <Button
+            android:id="@+id/btnDetalhes1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Detalhes"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#2563EB"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+    <!-- CARD EVENTO 2 -->
+    <LinearLayout
+        android:id="@+id/cardEvento2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:background="#1E293B"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardEvento1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Workshop Mobile"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laboratório 02 - 20:30"
+            android:textColor="#CBD5E1"
+            android:layout_marginTop="6dp"/>
+
+        <Button
+            android:id="@+id/btnDetalhes2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Detalhes"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#2563EB"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

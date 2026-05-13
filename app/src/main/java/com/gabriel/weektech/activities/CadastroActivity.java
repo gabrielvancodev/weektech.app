@@ -14,6 +14,7 @@ public class CadastroActivity extends AppCompatActivity {
     EditText nome, ra, curso, serie, email, senha;
     CheckBox checkCoffee;
     Button btnCadastrar;
+    Button btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,14 @@ public class CadastroActivity extends AppCompatActivity {
         senha = findViewById(R.id.senha);
         checkCoffee = findViewById(R.id.checkCoffee);
         btnCadastrar = findViewById(R.id.btnCadastrar);
-
+        btnVoltar = findViewById(R.id.btnVoltar);
         btnCadastrar.setOnClickListener(v -> cadastrarUsuario());
-    }
+
+        btnVoltar = findViewById(R.id.btnVoltar);
+
+        btnVoltar.setOnClickListener(v -> {
+            finish();
+        });    }
 
     private void cadastrarUsuario() {
 
