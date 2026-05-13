@@ -1,25 +1,67 @@
 package com.gabriel.weektech.activities;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.gabriel.weektech.R;
-import com.gabriel.weektech.database.AppDatabase;
-import com.gabriel.weektech.models.Evento;
-import java.util.List;
 
 public class EventoActivity extends AppCompatActivity {
+
+    Button btnDetalhes1, btnDetalhes2;
+    ImageButton btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventos);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerEventos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        btnDetalhes1 = findViewById(R.id.btnDetalhes1);
+        btnDetalhes2 = findViewById(R.id.btnDetalhes2);
+        btnVoltar = findViewById(R.id.btnVoltar);
 
-        // Aqui você precisaria de um Adapter para mostrar a lista.
-        // Por enquanto, apenas inicializamos o básico para a tela abrir sem erro.
+        // VOLTAR
+        btnVoltar.setOnClickListener(v -> finish());
+
+        // EVENTO 1
+        btnDetalhes1.setOnClickListener(v -> abrirDetalhesEvento(
+                "Palestra IA e Futuro",
+                "Uma palestra sobre Inteligência Artificial, inovação e tecnologia.\n\nHorário: 19:00\nLocal: Auditório Principal"
+        ));
+
+        // EVENTO 2
+        btnDetalhes2.setOnClickListener(v -> abrirDetalhesEvento(
+                "Workshop Mobile",
+                "Workshop prático de desenvolvimento Android.\n\nHorário: 20:30\nLocal: Laboratório 02"
+        ));
+    }
+
+    private void abrirDetalhesEvento(String titulo, String descricao) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(titulo);
+
+        builder.setMessage(descricao);
+
+        builder.setPositiveButton("Inscrever-se", (dialog, which) -> {
+
+            Intent intent = new Intent(
+                    EventoActivity.this,
+                    InscricaoActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+        builder.setNegativeButton("Fechar", (dialog, which) -> {
+            dialog.dismiss();
+        });
+
+        builder.show();
     }
 }
