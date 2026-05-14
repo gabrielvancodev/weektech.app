@@ -1,38 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="4dp">
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF">
 
     <LinearLayout
-        android:padding="16dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/nomeEvento"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nome do Evento"
-            android:textSize="18sp"
+            android:textColor="#0F172A"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/dataEvento"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp"
+            android:text="10 de Outubro - 19:00"
+            android:textColor="#64748B"
+            android:textSize="14sp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDetalhes"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="0dp"
             android:text="Ver detalhes"
-            android:layout_marginTop="8dp" />
+            android:textAllCaps="false"
+            android:textColor="#2563EB"
+            android:textStyle="bold"
+            app:icon="@android:drawable/ic_menu_directions"
+            app:iconPadding="8dp"
+            app:iconTint="#2563EB" />
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

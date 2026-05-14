@@ -1,53 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:background="#0F172A"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastro de Localização"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"/>
-
-    <EditText
-        android:id="@+id/nomeLocal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome do Local"
-        android:inputType="text"/>
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/endereco"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Endereço"
-        android:inputType="text"/>
+        <!-- TÍTULO -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Localização"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/cidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cidade"
-        android:inputType="text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confira onde acontecerá a WeekTech"
+            android:textColor="#CBD5E1"
+            android:textSize="16sp"
+            android:layout_marginBottom="28dp"/>
 
-    <EditText
-        android:id="@+id/estado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Estado"
-        android:inputType="text"/>
+        <!-- CARD PRINCIPAL -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="#1E293B">
 
-    <Button
-        android:id="@+id/btnSalvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar Localização"
-        android:layout_marginTop="16dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-</LinearLayout>
+                <!-- IMAGEM -->
+                <ImageView
+                    android:id="@+id/imgUnicesumar"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/unicesumar"
+                    android:background="#FFFFFF"/>
+
+                <!-- NOME -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UniCesumar Londrina"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
+
+                <!-- ENDEREÇO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Av. Santa Mônica, 450 - Franca, Londrina - PR"
+                    android:textColor="#CBD5E1"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
+
+                <!-- DESCRIÇÃO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O evento WeekTech acontecerá no campus UniCesumar Londrina, contando com palestras, workshops e apresentações de projetos."
+                    android:textColor="#E2E8F0"
+                    android:textSize="15sp"
+                    android:layout_marginTop="16dp"
+                    android:lineSpacingExtra="4dp"/>
+
+                <!-- BOTÃO GOOGLE MAPS -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMaps"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="28dp"
+                    android:text="📍 Abrir no Google Maps"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:backgroundTint="#2563EB"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="18dp"/>
+
+                <!-- BOTÃO VOLTAR -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVoltar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="12dp"
+                    android:text="← Voltar"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:backgroundTint="#334155"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="18dp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

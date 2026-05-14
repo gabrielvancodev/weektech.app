@@ -3,70 +3,175 @@
     android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
+    android:background="#0F172A">
 
-    <!-- TÍTULO -->
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WeekTech"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <!-- MENU DE AÇÕES -->
-    <LinearLayout
-        android:id="@+id/menuAcoes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <Button
-            android:id="@+id/btnEventos"
-            android:text="Eventos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btnPalestras"
-            android:text="Palestras"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"/>
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <Button
-            android:id="@+id/btnLocalizacao"
-            android:text="Local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"/>
+            <!-- TOPO -->
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WeekTech"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/btnFAQ"
-            android:text="FAQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tecnologia • Inovação • Networking"
+                android:textColor="#CBD5E1"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="24dp"/>
 
-    <!-- LISTA DE EVENTOS -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerEventos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/menuAcoes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
+            <!-- EVENTO MAIS PRÓXIMO -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="#2563EB"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥 Próximo Evento"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/txtProximoEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carregando evento..."
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:layout_marginTop="12dp"/>
+
+                    <TextView
+                        android:id="@+id/txtDataEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data do evento"
+                        android:textColor="#E2E8F0"
+                        android:textSize="16sp"
+                        android:layout_marginTop="6dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAbrirEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver Evento"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:textColor="#2563EB"
+                        android:layout_marginTop="18dp"
+                        android:backgroundTint="#FFFFFF"
+                        app:cornerRadius="16dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- MENU -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1E293B"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Menu Principal"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="18dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEventos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📅 Eventos"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:backgroundTint="#2563EB"
+                        android:layout_marginBottom="12dp"
+                        app:cornerRadius="18dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPalestras"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🎤 Palestras"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:backgroundTint="#2563EB"
+                        android:layout_marginBottom="12dp"
+                        app:cornerRadius="18dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLocalizacao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Localização"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:backgroundTint="#2563EB"
+                        android:layout_marginBottom="12dp"
+                        app:cornerRadius="18dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnFAQ"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="❓ FAQ"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:backgroundTint="#2563EB"
+                        app:cornerRadius="18dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

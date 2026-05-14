@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0F172A"
+    android:padding="20dp">
+
+    <!-- BOTÃO VOLTAR -->
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+        android:id="@+id/tituloPalestras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Palestras"
-        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btnVoltar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/subtituloPalestras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aprenda com os melhores especialistas"
+        android:textColor="#CBD5E1"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tituloPalestras"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPalestras"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/subtituloPalestras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_palestra"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
