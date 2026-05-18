@@ -1,217 +1,235 @@
 package com.gabriel.weektech.activities;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.gabriel.weektech.R;
 import com.gabriel.weektech.database.AppDatabase;
 import com.gabriel.weektech.models.Evento;
-import com.gabriel.weektech.models.Palestra;
-import com.gabriel.weektech.models.Projeto;
-import com.gabriel.weektech.models.Usuario;
+import com.gabriel.weektech.models.Inscricao;
+import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
 
-    TextView totalUsuarios;
-    RecyclerView recyclerUsuarios;
+    private MaterialButton btnCadastrarEvento,
+            btnCadastrarPalestra,
+            btnCadastrarPalestrante,
+            btnCadastrarProjeto,
+            btnFechar;
 
-    Button btnCadastrarEvento;
-    Button btnCadastrarPalestra;
-    Button btnCadastrarPalestrante;
-    Button btnCadastrarProjeto;
-    Button btnVoltar;
-    Button btnFechar;
+    private TextView totalUsuarios;
 
-    AppDatabase db;
+    private ListView listaUsuarios;
+
+    private ArrayList<String> listaEventos;
+
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin);
 
         db = AppDatabase.getDatabase(this);
 
-        totalUsuarios = findViewById(R.id.totalUsuarios);
-        recyclerUsuarios = findViewById(R.id.recyclerUsuarios);
+        iniciarComponentes();
 
-        btnCadastrarEvento = findViewById(R.id.btnCadastrarEvento);
-        btnCadastrarPalestra = findViewById(R.id.btnCadastrarPalestra);
-        btnCadastrarPalestrante = findViewById(R.id.btnCadastrarPalestrante);
-        btnCadastrarProjeto = findViewById(R.id.btnCadastrarProjeto);
+        carregarEventos();
 
-        btnVoltar = findViewById(R.id.btnVoltar);
-        btnFechar = findViewById(R.id.btnFechar);
+        btnFechar.setOnClickListener(v -> finish());
 
-        carregarTotalUsuarios();
+        btnCadastrarEvento.setOnClickListener(v ->
+                abrirCadastroEvento()
+        );
 
-        // EVENTO
-        btnCadastrarEvento.setOnClickListener(v -> abrirDialogEvento());
+        btnCadastrarPalestra.setOnClickListener(v ->
+                mostrarMensagem("Cadastro de palestras será implementado")
+        );
 
-        // PALESTRA
-        btnCadastrarPalestra.setOnClickListener(v -> abrirDialogPalestra());
+        btnCadastrarPalestrante.setOnClickListener(v ->
+                mostrarMensagem("Cadastro de palestrantes será implementado")
+        );
 
-        // PALESTRANTE
-        btnCadastrarPalestrante.setOnClickListener(v -> abrirDialogPalestrante());
-
-        // PROJETO
-        btnCadastrarProjeto.setOnClickListener(v -> abrirDialogProjeto());
-
-        // VOLTAR
-        btnVoltar.setOnClickListener(v -> finish());
-
-        // FECHAR
-        btnFechar.setOnClickListener(v -> finishAffinity());
+        btnCadastrarProjeto.setOnClickListener(v ->
+                mostrarMensagem("Cadastro de projetos será implementado")
+        );
     }
 
-    private void carregarTotalUsuarios() {
+    private void iniciarComponentes() {
 
-        int total = db.usuarioDao().contarUsuarios();
+        btnCadastrarEvento =
+                findViewById(R.id.btnCadastrarEvento);
 
-        totalUsuarios.setText("Total de inscritos: " + total);
+        btnCadastrarPalestra =
+                findViewById(R.id.btnCadastrarPalestra);
+
+        btnCadastrarPalestrante =
+                findViewById(R.id.btnCadastrarPalestrante);
+
+        btnCadastrarProjeto =
+                findViewById(R.id.btnCadastrarProjeto);
+
+        btnFechar =
+                findViewById(R.id.btnFechar);
+
+        totalUsuarios =
+                findViewById(R.id.totalUsuarios);
+
+        listaUsuarios =
+                findViewById(R.id.recyclerUsuarios);
     }
 
-    // ==========================
-    // EVENTO
-    // ==========================
-    private void abrirDialogEvento() {
+    private void carregarEventos() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        List<Evento> eventos =
+                db.eventoDao().listar();
+
+        listaEventos = new ArrayList<>();
+
+        int totalInscritos = 0;
+
+        for (Evento evento : eventos) {
+
+            List<Inscricao> inscricoes =
+                    db.inscricaoDao()
+                            .listarPorEvento(evento.id_evento);
+
+            int quantidade =
+                    inscricoes.size();
+
+            totalInscritos += quantidade;
+
+            String item =
+                    "📅 " + evento.nome_evento +
+                            "\n📆 " + evento.data_inicio +
+                            "\n👥 Inscritos: " + quantidade +
+                            "/" + evento.qntd_vagas;
+
+            listaEventos.add(item);
+        }
+
+        totalUsuarios.setText(
+                "Total de inscrições: " + totalInscritos
+        );
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(
+                        this,
+                        android.R.layout.simple_list_item_1,
+                        listaEventos
+                );
+
+        listaUsuarios.setAdapter(adapter);
+    }
+
+    private void abrirCadastroEvento() {
+
+        View view =
+                getLayoutInflater()
+                        .inflate(R.layout.dialog_cadastro_evento,
+                                null);
+
+        EditText edtNome =
+                view.findViewById(R.id.edtNomeEvento);
+
+        EditText edtDescricao =
+                view.findViewById(R.id.edtDescricaoEvento);
+
+        EditText edtData =
+                view.findViewById(R.id.edtDataEvento);
+
+        EditText edtVagas =
+                view.findViewById(R.id.edtVagasEvento);
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this);
 
         builder.setTitle("Cadastrar Evento");
 
-        final EditText input = new EditText(this);
-        input.setHint("Nome do Evento");
+        builder.setView(view);
 
-        builder.setView(input);
+        builder.setPositiveButton(
+                "Salvar",
+                (dialog, which) -> {
 
-        builder.setPositiveButton("Salvar", (dialog, width) -> {
+                    String nome =
+                            edtNome.getText().toString().trim();
 
-            String nomeEvento = input.getText().toString();
+                    String descricao =
+                            edtDescricao.getText().toString().trim();
 
-            Evento evento = new Evento();
-            evento.nome_evento = nomeEvento;
+                    String data =
+                            edtData.getText().toString().trim();
 
-            db.eventoDao().inserir(evento);
+                    String vagasStr =
+                            edtVagas.getText().toString().trim();
 
-            Toast.makeText(this,
-                    "Evento cadastrado!",
-                    Toast.LENGTH_SHORT).show();
-        });
+                    if (nome.isEmpty()
+                            || descricao.isEmpty()
+                            || data.isEmpty()
+                            || vagasStr.isEmpty()) {
 
-        builder.setNegativeButton("Fechar", null);
+                        mostrarMensagem(
+                                "Preencha todos os campos"
+                        );
 
-        builder.show();
-    }
+                        return;
+                    }
 
-    // ==========================
-    // PALESTRA
-    // ==========================
-    private void abrirDialogPalestra() {
+                    Evento evento = new Evento();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    evento.nome_evento = nome;
+                    evento.descricao = descricao;
+                    evento.data_inicio = data;
+                    evento.data_fim = data;
+                    evento.qntd_vagas =
+                            Integer.parseInt(vagasStr);
 
-        builder.setTitle("Cadastrar Palestra");
+                    evento.qntd_inscritos = 0;
 
-        final EditText input = new EditText(this);
-        input.setHint("Título da Palestra");
+                    evento.id_localizacao = 1;
 
-        builder.setView(input);
+                    db.eventoDao().inserir(evento);
 
-        builder.setPositiveButton("Salvar", (dialog, width) -> {
+                    mostrarMensagem(
+                            "Evento cadastrado com sucesso!"
+                    );
 
-            String titulo = input.getText().toString();
+                    carregarEventos();
+                });
 
-            Palestra palestra = new Palestra();
-            palestra.titulo = titulo;
-
-            db.palestraDao().inserir(palestra);
-
-            Toast.makeText(this,
-                    "Palestra cadastrada!",
-                    Toast.LENGTH_SHORT).show();
-        });
-
-        builder.setNegativeButton("Fechar", null);
-
-        builder.show();
-    }
-
-    // ==========================
-    // PALESTRANTE
-    // ==========================
-    private void abrirDialogPalestrante() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Cadastrar Palestrante");
-
-        final EditText input = new EditText(this);
-        input.setHint("Nome do Palestrante");
-
-        builder.setView(input);
-
-        builder.setPositiveButton("Salvar", (dialog, width) -> {
-
-            String nome = input.getText().toString();
-
-            Usuario palestrante = new Usuario();
-
-            palestrante.nome_completo = nome;
-            palestrante.tipo = "PALESTRANTE";
-            palestrante.email = nome + "@weektech.com";
-            palestrante.senha = "123";
-
-            db.usuarioDao().inserir(palestrante);
-
-            Toast.makeText(this,
-                    "Palestrante cadastrado!",
-                    Toast.LENGTH_SHORT).show();
-        });
-
-        builder.setNegativeButton("Fechar", null);
+        builder.setNegativeButton(
+                "Cancelar",
+                (dialog, which) -> dialog.dismiss()
+        );
 
         builder.show();
     }
 
-    // ==========================
-    // PROJETO
-    // ==========================
-    private void abrirDialogProjeto() {
+    private void mostrarMensagem(String mensagem) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Toast.makeText(
+                this,
+                mensagem,
+                Toast.LENGTH_SHORT
+        ).show();
+    }
 
-        builder.setTitle("Cadastrar Projeto");
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        final EditText input = new EditText(this);
-        input.setHint("Nome do Projeto");
-
-        builder.setView(input);
-
-        builder.setPositiveButton("Salvar", (dialog, width) -> {
-
-            String nomeProjeto = input.getText().toString();
-
-            Projeto projeto = new Projeto();
-            projeto.nome_projeto = nomeProjeto;
-
-            db.projetoDao().inserir(projeto);
-
-            Toast.makeText(this,
-                    "Projeto cadastrado!",
-                    Toast.LENGTH_SHORT).show();
-        });
-
-        builder.setNegativeButton("Fechar", null);
-
-        builder.show();
+        carregarEventos();
     }
 }

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F172A">
+    android:background="#0F172A"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,15 +21,7 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="24dp">
 
-            <Button
-                android:id="@+id/btnVoltar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="← Voltar"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#00CFFF"/>
+
 
             <TextView
                 android:layout_width="0dp"
@@ -36,19 +29,20 @@
                 android:layout_weight="1"
                 android:text="Painel Admin"
                 android:textColor="#FFFFFF"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:paddingStart="12dp"/>
         </LinearLayout>
 
         <!-- CARD RESUMO -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="8dp"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#1E293B">
+            android:backgroundTint="#1E293B"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,11 +53,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Resumo do Evento"
+                    android:text="Resumo Geral"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    android:layout_marginBottom="12dp"/>
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/totalUsuarios"
@@ -71,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:text="Total de inscritos: 0"
                     android:textColor="#CBD5E1"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_marginTop="12dp"/>
 
             </LinearLayout>
 
@@ -87,69 +81,75 @@
             android:textSize="22sp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- BOTÕES -->
-        <LinearLayout
+        <!-- GRID RESPONSIVO -->
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:columnCount="2"
+            android:useDefaultMargins="true">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCadastrarEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar Evento"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:text="📅\nEvento"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 android:textSize="16sp"
+                android:textAllCaps="false"
                 android:backgroundTint="#2563EB"
-                android:layout_marginBottom="12dp"/>
+                app:cornerRadius="18dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCadastrarPalestra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar Palestra"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:text="🎤\nPalestra"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 android:textSize="16sp"
+                android:textAllCaps="false"
                 android:backgroundTint="#2563EB"
-                android:layout_marginBottom="12dp"/>
+                app:cornerRadius="18dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCadastrarPalestrante"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar Palestrante"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:text="🧑‍🏫\nPalestrante"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 android:textSize="16sp"
+                android:textAllCaps="false"
                 android:backgroundTint="#2563EB"
-                android:layout_marginBottom="12dp"/>
+                app:cornerRadius="18dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCadastrarProjeto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar Projeto"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:text="💡\nProjeto"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 android:textSize="16sp"
+                android:textAllCaps="false"
                 android:backgroundTint="#2563EB"
-                android:layout_marginBottom="24dp"/>
+                app:cornerRadius="18dp"/>
 
-        </LinearLayout>
+        </GridLayout>
 
-        <!-- CARD USUÁRIOS -->
+        <!-- CARD INSCRITOS -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="8dp"
-            android:backgroundTint="#1E293B">
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#1E293B"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,28 +164,33 @@
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginBottom="14dp"/>
 
-                <androidx.recyclerview.widget.RecyclerView
+                <ListView
                     android:id="@+id/recyclerUsuarios"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"/>
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:background="#FFFFFF"
+                    android:divider="#CBD5E1"
+                    android:dividerHeight="1dp"/>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- BOTÃO FECHAR -->
-        <Button
+        <!-- FECHAR -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnFechar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="28dp"
             android:text="Fechar Painel"
-            android:textAllCaps="false"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:backgroundTint="#DC2626"
-            android:layout_marginTop="24dp"/>
+            app:cornerRadius="16dp"/>
 
     </LinearLayout>
 

@@ -4,13 +4,9 @@ import androidx.room.*;
 
 
 @Entity(
-        tableName = "evento",
-        foreignKeys = @ForeignKey(
-                entity = Localizacao.class,
-                parentColumns = "id_localizacao",
-                childColumns = "id_localizacao",
-                onDelete = ForeignKey.CASCADE
-        )
+        tableName = "evento"
+
+
 )
 public class Evento {
 

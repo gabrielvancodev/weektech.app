@@ -16,6 +16,9 @@ public interface EventoDao {
     @Query("SELECT * FROM evento")
     List<Evento> listar();
 
+    @Query("SELECT * FROM evento WHERE id_evento = :id")
+    Evento buscarPorId(int id);
+
     @Transaction
     @Query("SELECT * FROM evento")
     List<EventoComPalestras> listarEventosComPalestras();

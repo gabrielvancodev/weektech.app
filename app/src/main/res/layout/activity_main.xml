@@ -143,6 +143,17 @@
                 android:backgroundTint="#1E293B"
                 app:cornerRadius="16dp"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdmin"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:text="🛠️\nAdmin"
+                android:textAllCaps="false"
+                android:backgroundTint="#1E293B"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="16dp"/>
         </GridLayout>
 
     </LinearLayout>

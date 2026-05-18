@@ -9,6 +9,8 @@ import java.util.List;
 @Dao
 public interface InscricaoDao {
 
+    @Query("SELECT * FROM inscricao WHERE id_evento = :idEvento")
+    List<Inscricao> listarPorEvento(int idEvento);
     @Insert
     void inserir(Inscricao inscricao);
 
